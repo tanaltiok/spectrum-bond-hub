@@ -1,24 +1,20 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { ArrowRight, ArrowUpRight, MapPin, SlidersHorizontal, Sparkles, Wifi } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { pageMeta } from '@/lib/page-meta';
+import livingRoom from '@/assets/spectrum-living-room.jpg';
+import blinds from '@/assets/wood-blinds.jpg';
+import drapery from '@/assets/drapery.jpg';
+import bond from '@/assets/bond-bridge.png.asset.json';
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
+export const Route = createFileRoute('/')({ head: () => pageMeta('Spectrum Window Coverings | Richmond, BC & Bond Canada', 'Discover beautiful window coverings from Spectrum in Richmond, BC, and bring your home together with Bond smart control. Canada’s Bond distributor.'), component: Index });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  return <>
+    <section className="hero"><img className="hero-photo" src={livingRoom} alt="Sunlit living room with floor-to-ceiling roller shades" width={1920} height={1024} fetchPriority="high" /><div className="hero-content reveal"><div className="eyebrow"><span className="eyebrow-line" />Your home. In a new light.</div><h1>Spectrum<br />Window Coverings</h1><p className="hero-description">Beautifully considered window coverings.<br />Thoughtfully connected homes. Discover a new way to live with light, right here in Richmond, BC.</p><div className="hero-buttons"><Button variant="hero" size="lg" asChild><Link to="/shop">Explore our collection <ArrowUpRight /></Link></Button><Button variant="heroOutline" size="lg" asChild><Link to="/bond">Discover Bond <ArrowUpRight /></Link></Button></div></div><div className="hero-caption">BEAUTIFUL BY DESIGN. SMART BY NATURE.</div></section>
+    <div className="trust-band"><div className="trust-item"><MapPin /><span>Locally rooted in Richmond, BC</span></div><div className="trust-item"><SlidersHorizontal /><span>Window coverings, your way</span></div><div className="trust-item"><Wifi /><span>Canada’s Bond distributor</span></div><div className="trust-item"><Sparkles /><span>Design meets smart living</span></div></div>
+    <section className="section"><div className="section-heading"><div><div className="eyebrow">A smarter home starts here</div><h2>Meet your home’s new connection.</h2></div><Button variant="link" asChild><Link to="/bond">Explore Bond <ArrowUpRight /></Link></Button></div><div className="bond-feature"><Link to="/bond" className="bond-visual" aria-label="Discover Bond Bridge"><span className="product-label">Now available in Canada</span><img src={bond.url} alt="Black Bond Bridge smart home controller" loading="lazy" width={1000} height={1000} /></Link><div className="bond-info"><div className="eyebrow">Official Canadian distributor</div><div className="bond-wordmark">bond<span className="text-accent">.</span></div><h3>Your shades. Your voice.<br />One simple connection.</h3><p>Bring compatible motorized shades, ceiling fans, and more together with Bond. Smart control without replacing the things you love.</p><Button variant="hero" size="lg" asChild><Link to="/shop">Shop Bond <ArrowUpRight /></Link></Button></div></div></section>
+    <section className="section pt-0"><div className="section-heading"><div><div className="eyebrow">The Spectrum collection</div><h2>A beautiful fit for every window.</h2></div><Button variant="link" asChild><Link to="/contact">Find your perfect fit <ArrowUpRight /></Link></Button></div><div className="category-grid">{[{ name: 'Shades', description: 'Soft light. Clean lines. Everyday comfort.', image: livingRoom }, { name: 'Blinds', description: 'Timeless details, precisely considered.', image: blinds }, { name: 'Drapery', description: 'A softer touch. A beautiful finish.', image: drapery }].map((item) => <Link to="/contact" key={item.name} className="category-item"><img src={item.image} className="category-image" alt={`${item.name} in a contemporary living room`} loading="lazy" width={1024} height={1024} /><div className="category-name">{item.name}<ArrowUpRight size={18} /></div><p>{item.description}</p></Link>)}</div></section>
+    <section className="local-band"><div><h2>Local expertise. A personal touch.</h2><p>Let’s find the right window coverings and smart solutions for your home.</p></div><Button size="lg" asChild><Link to="/contact">Let’s talk about your space <ArrowRight /></Link></Button></section>
+  </>;
 }
