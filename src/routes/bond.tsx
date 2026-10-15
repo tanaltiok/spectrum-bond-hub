@@ -1,0 +1,11 @@
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { ArrowUpRight, Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { PageIntro } from '@/components/site-shell';
+import { pageMeta } from '@/lib/page-meta';
+import bridge from '@/assets/bond-bridge.png.asset.json';
+
+export const Route = createFileRoute('/bond')({ head: () => pageMeta('Bond Smart Home Control | Canadian Distributor Spectrum', 'Meet Bond: connect compatible motorized shades, ceiling fans, and fireplaces to smart home control. Discover Bond in Canada with Spectrum.'), component: Bond });
+function Bond() {
+  return <><PageIntro eyebrow="Spectrum × Bond" title="Bond. Bring your home together." description="Your favourite spaces, now connected. Spectrum is your Canadian Bond distributor, bringing a simpler approach to smart living." /><section className="section detail-grid"><div className="bond-visual"><span className="product-label">Bond Bridge</span><img src={bridge.url} alt="Bond Bridge in black" width={1000} height={1000} /></div><div><div className="eyebrow">Small device. More possibilities.</div><h2>Smart control.<br />Without starting over.</h2><p>Bond Bridge connects compatible RF and IR remote-controlled devices to your Wi-Fi. Use the Bond Home app to control your shades, ceiling fans, and fireplaces, or connect your favourite voice assistant.</p><ul className="detail-list"><li><Check />Control compatible devices from the Bond Home app</li><li><Check />Works with Alexa, Google Home, and SmartThings</li><li><Check />Connect existing compatible remote-controlled devices</li><li><Check />Canadian distribution through Spectrum</li></ul><div className="flex flex-wrap gap-3"><Button size="lg" asChild><Link to="/shop">Explore Bond products <ArrowUpRight /></Link></Button><Button size="lg" variant="outline" asChild><Link to="/contact">Check compatibility</Link></Button></div></div></section><section className="local-band"><div><h2>Your next project, connected.</h2><p>Homeowners and industry professionals: let’s talk Bond.</p></div><Button size="lg" asChild><Link to="/contact">Contact Spectrum <ArrowUpRight /></Link></Button></section></>;
+}
