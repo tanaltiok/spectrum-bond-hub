@@ -13,7 +13,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const navigation = links.map((link) => <Link key={link.to} to={link.to} onClick={() => setOpen(false)} className={`nav-link ${pathname === link.to ? 'active' : ''}`}>{link.label}</Link>);
-  return <><header className="site-header"><Brand /><nav className="desktop-nav" aria-label="Main navigation">{navigation}<span className="header-actions"><Button variant="ghost" size="icon" asChild><Link to="/shop" aria-label="Browse the shop" title="Browse the shop"><ShoppingBag size={19} /></Link></Button></span></nav><Button variant="ghost" size="icon" className="menu-toggle" onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>{open ? <X /> : <Menu />}</Button></header>{open && <nav className="mobile-nav" aria-label="Mobile navigation">{navigation}</nav>}</>;
+  return <><header className="site-header"><Brand /><nav className="desktop-nav" aria-label="Main navigation">{navigation}<span className="header-actions"><Button variant="ghost" size="icon" asChild><Link to="/shop" aria-label="Browse the shop" title="Browse the shop"><ShoppingBag size={19} /></Link></Button></span></nav><Button variant="ghost" size="icon" className="hidden max-[600px]:inline-flex" onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>{open ? <X /> : <Menu />}</Button></header>{open && <nav className="mobile-nav" aria-label="Mobile navigation">{navigation}</nav>}</>;
 }
 
 export function SiteFooter() {

@@ -1,4 +1,4 @@
 # Spectrum website
-- [ ] Build Spectrum-focused home page and requested navigation.
-- [ ] Add Shop All, Bond, and Contact destinations.
-- [ ] Verify navigation and page rendering.
+- [x] Build Spectrum-focused home page and requested navigation.
+- [x] Add Shop All, Bond, and Contact destinations.
+- [x] Verify navigation and page rendering.
